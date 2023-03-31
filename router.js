@@ -3,10 +3,7 @@ const router = new Router()
 const AchivmentsController = require('./achivmentsController')
 
 //AchivmentsController
-router.post('/savePaper', AchivmentsController.savePaper)
-router.post('/saveMetal', AchivmentsController.saveMetal)
-router.post('/savePlastic', AchivmentsController.savePlastic)
-router.post('/saveGlass', AchivmentsController.saveGlass)
+router.post('/save', AchivmentsController.saveAll)
 
 router.post('/getPaper', AchivmentsController.getPaper)
 router.post('/getMetal', AchivmentsController.getMetal)

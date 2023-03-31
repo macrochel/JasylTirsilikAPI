@@ -7,79 +7,28 @@ const { response } = require('express')
 
 class achivmentsController {
 
-    async savePaper(req, res) {
-        try {
+    async saveAll(req, res){
+        try{
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
                 return res.json({message: "error", errors})
             }
             const {hwid} = req.body;
-            const candidate = await Paper.findOne({hwid})
-            if (candidate) {
-                return ResizeObserver.json({message: "exist"})
-            }
-            const achiv = new Paper({hwid})
-            await achiv.save()
-            return res.json({message: "saved"})
-        } catch (e) {
-            res.json({message: 'save error'})
-        }
-    }
-
-    async saveMetal(req, res) {
-        try {
-            const errors = validationResult(req)
-            if (!errors.isEmpty()) {
-                return res.json({message: "error", errors})
-            }
-            const {hwid} = req.body;
-            const candidate = await Metal.findOne({hwid})
-            if (candidate) {
-                return ResizeObserver.json({message: "exist"})
-            }
-            const achiv = new Metal({hwid})
-            await achiv.save()
-            return res.json({message: "saved"})
-        } catch (e) {
-            res.json({message: 'save error'})
-        }
-    }
-
-    async savePlastic(req, res) {
-        try {
-            const errors = validationResult(req)
-            if (!errors.isEmpty()) {
-                return response.json({message: "error", errors})
-            }
-            const {hwid} = req.body;
-            const candidate = await Plastic.findOne({hwid})
-            if (candidate) {
+            const candidate1 = await Paper.findOne({hwid})
+            if (candidate1) {
                 return res.json({message: "exist"})
             }
-            const achiv = new Plastic({hwid})
+            var achiv = new Paper({hwid})
+            await achiv.save()
+            achiv = new Metal({hwid})
+            await achiv.save()
+            achiv = new Plastic({hwid})
+            await achiv.save()
+            achiv = new Glass({hwid})
             await achiv.save()
             return res.json({message: "saved"})
-        } catch (e) {
-            res.json({message: 'save error'})
-        }
-    }
-
-    async saveGlass(req, res) {
-        try {
-            const errors = validationResult(req)
-            if (!errors.isEmpty()) {
-                return res.json({message: "error", errors})
-            }
-            const {hwid} = req.body;
-            const candidate = await Glass.findOne({hwid})
-            if (candidate) {
-                return res.json({message: "exist"})
-            }
-            const achiv = new Glass({hwid})
-            await achiv.save()
-            return res.json({message: "saved"})
-        } catch (e) {
-            res.json({message: 'save error'})
+        } catch(e){
+            res.json({message: 'save error' + e})
         }
     }
 
