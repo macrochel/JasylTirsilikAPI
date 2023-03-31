@@ -96,40 +96,13 @@ class achivmentsController {
         }
     }
 
-    async updatePaper(req, res){
+    async update(req, res){
         try{
-            const {hwid, count} = req.body
-            const app = await Paper.updateOne({'hwid': hwid }, {$set: {'count': count} });
-            res.json({message: `Updated`})
-        } catch(e){
-            res.json({message: 'update error'})
-        }
-    }
-
-    async updateMetal(req, res){
-        try{
-            const {hwid, count} = req.body
-            const app = await Metal.updateOne({'hwid': hwid }, {$set: {'count': count} });
-            res.json({message: `Updated`})
-        } catch(e){
-            res.json({message: 'update error'})
-        }
-    }
-
-    async updatePlastic(req, res){
-        try{
-            const {hwid, count} = req.body
-            const app = await Plastic.updateOne({'hwid': hwid }, {$set: {'count': count} });
-            res.json({message: `Updated`})
-        } catch(e){
-            res.json({message: 'update error'})
-        }
-    }
-
-    async updateGlass(req, res){
-        try{
-            const {hwid, count} = req.body
-            const app = await Glass.updateOne({'hwid': hwid }, {$set: {'count': count} });
+            const {hwid, count1, count2, count3, count4} = req.body
+            var app = await Paper.updateOne({'hwid': hwid }, {$set: {'count': count1} });
+            app = await Metal.updateOne({'hwid': hwid }, {$set: {'count': count2} });
+            app = await Plastic.updateOne({'hwid': hwid }, {$set: {'count': count3} });
+            app = await Glass.updateOne({'hwid': hwid }, {$set: {'count': count4} });
             res.json({message: `Updated`})
         } catch(e){
             res.json({message: 'update error'})
