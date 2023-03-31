@@ -3,6 +3,7 @@ const Metal = require('./models/Metal')
 const Plastic = require('./models/Plastic')
 const Glass = require('./models/Glass')
 const { validationResult } = require('express-validator')
+const { response } = require('express')
 
 class achivmentsController {
 
@@ -10,19 +11,19 @@ class achivmentsController {
         try {
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
-                return res.status(400).json({message: "error", errors})
+                return res.json({message: "error", errors})
             }
             const {hwid} = req.body;
             const candidate = await Paper.findOne({hwid})
             if (candidate) {
-                return res.status(400).json({message: "exist"})
+                return ResizeObserver.json({message: "exist"})
             }
             const achiv = new Paper({hwid})
             await achiv.save()
             return res.json({message: "saved"})
         } catch (e) {
             console.log(e)
-            res.status(400).json({message: 'save error'})
+            res.json({message: 'save error'})
         }
     }
 
@@ -30,19 +31,19 @@ class achivmentsController {
         try {
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
-                return res.status(400).json({message: "error", errors})
+                return res.json({message: "error", errors})
             }
             const {hwid} = req.body;
             const candidate = await Metal.findOne({hwid})
             if (candidate) {
-                return res.status(400).json({message: "exist"})
+                return ResizeObserver.json({message: "exist"})
             }
             const achiv = new Metal({hwid})
             await achiv.save()
             return res.json({message: "saved"})
         } catch (e) {
             console.log(e)
-            res.status(400).json({message: 'save error'})
+            res.json({message: 'save error'})
         }
     }
 
@@ -50,19 +51,19 @@ class achivmentsController {
         try {
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
-                return res.status(400).json({message: "error", errors})
+                return response.json({message: "error", errors})
             }
             const {hwid} = req.body;
             const candidate = await Plastic.findOne({hwid})
             if (candidate) {
-                return res.status(400).json({message: "exist"})
+                return res.json({message: "exist"})
             }
             const achiv = new Plastic({hwid})
             await achiv.save()
             return res.json({message: "saved"})
         } catch (e) {
             console.log(e)
-            res.status(400).json({message: 'save error'})
+            res.json({message: 'save error'})
         }
     }
 
@@ -70,19 +71,19 @@ class achivmentsController {
         try {
             const errors = validationResult(req)
             if (!errors.isEmpty()) {
-                return res.status(400).json({message: "error", errors})
+                return res.json({message: "error", errors})
             }
             const {hwid} = req.body;
             const candidate = await Glass.findOne({hwid})
             if (candidate) {
-                return res.status(400).json({message: "exist"})
+                return res.json({message: "exist"})
             }
             const achiv = new Glass({hwid})
             await achiv.save()
             return res.json({message: "saved"})
         } catch (e) {
             console.log(e)
-            res.status(400).json({message: 'save error'})
+            res.json({message: 'save error'})
         }
     }
 
@@ -91,15 +92,15 @@ class achivmentsController {
             const {hwid} = req.body 
             const achivments = await Paper.findOne({hwid})
             if (achivments) {
-                return res.status(200).json({achivments})
+                return res.json({achivments})
             }
 
             else {
-                return res.status(400).json({message: 'false'})
+                return res.json({message: 'false'})
             }
         } catch (e) {
             console.log(e)
-            res.status(400).json({message: 'false'})
+            res.json({message: 'false'})
         }
     }
 
@@ -108,15 +109,15 @@ class achivmentsController {
             const {hwid} = req.body 
             const achivments = await Metal.findOne({hwid})
             if (achivments) {
-                return res.status(200).json({achivments})
+                return res.json({achivments})
             }
 
             else {
-                return res.status(400).json({message: 'false'})
+                return resizeTo.json({message: 'false'})
             }
         } catch (e) {
             console.log(e)
-            res.status(400).json({message: 'false'})
+            res.json({message: 'false'})
         }
     }
 
@@ -125,15 +126,15 @@ class achivmentsController {
             const {hwid} = req.body 
             const achivments = await Plastic.findOne({hwid})
             if (achivments) {
-                return res.status(200).json({achivments})
+                return res.json({achivments})
             }
 
             else {
-                return res.status(400).json({message: 'false'})
+                return res.json({message: 'false'})
             }
         } catch (e) {
             console.log(e)
-            res.status(400).json({message: 'false'})
+            res.json({message: 'false'})
         }
     }
 
@@ -142,15 +143,15 @@ class achivmentsController {
             const {hwid} = req.body 
             const achivments = await Glass.findOne({hwid})
             if (achivments) {
-                return res.status(200).json({achivments})
+                return res.json({achivments})
             }
 
             else {
-                return res.status(400).json({message: 'false'})
+                return res.json({message: 'false'})
             }
         } catch (e) {
             console.log(e)
-            res.status(400).json({message: 'false'})
+            res.json({message: 'false'})
         }
     }
 
