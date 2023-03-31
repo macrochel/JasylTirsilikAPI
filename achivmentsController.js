@@ -22,7 +22,6 @@ class achivmentsController {
             await achiv.save()
             return res.json({message: "saved"})
         } catch (e) {
-            console.log(e)
             res.json({message: 'save error'})
         }
     }
@@ -42,7 +41,6 @@ class achivmentsController {
             await achiv.save()
             return res.json({message: "saved"})
         } catch (e) {
-            console.log(e)
             res.json({message: 'save error'})
         }
     }
@@ -62,7 +60,6 @@ class achivmentsController {
             await achiv.save()
             return res.json({message: "saved"})
         } catch (e) {
-            console.log(e)
             res.json({message: 'save error'})
         }
     }
@@ -82,7 +79,6 @@ class achivmentsController {
             await achiv.save()
             return res.json({message: "saved"})
         } catch (e) {
-            console.log(e)
             res.json({message: 'save error'})
         }
     }
@@ -99,7 +95,6 @@ class achivmentsController {
                 return res.json({message: 'false'})
             }
         } catch (e) {
-            console.log(e)
             res.json({message: 'false'})
         }
     }
@@ -116,7 +111,6 @@ class achivmentsController {
                 return resizeTo.json({message: 'false'})
             }
         } catch (e) {
-            console.log(e)
             res.json({message: 'false'})
         }
     }
@@ -133,7 +127,6 @@ class achivmentsController {
                 return res.json({message: 'false'})
             }
         } catch (e) {
-            console.log(e)
             res.json({message: 'false'})
         }
     }
@@ -150,7 +143,6 @@ class achivmentsController {
                 return res.json({message: 'false'})
             }
         } catch (e) {
-            console.log(e)
             res.json({message: 'false'})
         }
     }
@@ -161,7 +153,7 @@ class achivmentsController {
             const app = await Paper.updateOne({'hwid': hwid }, {$set: {'count': count} });
             res.json({message: `Updated`})
         } catch(e){
-            console.log(e)
+            res.json({message: 'update error'})
         }
     }
 
@@ -171,7 +163,7 @@ class achivmentsController {
             const app = await Metal.updateOne({'hwid': hwid }, {$set: {'count': count} });
             res.json({message: `Updated`})
         } catch(e){
-            console.log(e)
+            res.json({message: 'update error'})
         }
     }
 
@@ -181,7 +173,7 @@ class achivmentsController {
             const app = await Plastic.updateOne({'hwid': hwid }, {$set: {'count': count} });
             res.json({message: `Updated`})
         } catch(e){
-            console.log(e)
+            res.json({message: 'update error'})
         }
     }
 
@@ -191,7 +183,7 @@ class achivmentsController {
             const app = await Glass.updateOne({'hwid': hwid }, {$set: {'count': count} });
             res.json({message: `Updated`})
         } catch(e){
-            console.log(e)
+            res.json({message: 'update error'})
         }
     }
 }
