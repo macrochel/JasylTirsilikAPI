@@ -91,7 +91,7 @@ class achivmentsController {
             const {hwid} = req.body 
             const achivments = await Paper.findOne({hwid})
             if (achivments) {
-                return res.status(200).json({message: 'true'})
+                return res.status(200).json({achivments})
             }
 
             else {
@@ -108,7 +108,7 @@ class achivmentsController {
             const {hwid} = req.body 
             const achivments = await Metal.findOne({hwid})
             if (achivments) {
-                return res.status(200).json({message: 'true'})
+                return res.status(200).json({achivments})
             }
 
             else {
@@ -125,7 +125,7 @@ class achivmentsController {
             const {hwid} = req.body 
             const achivments = await Plastic.findOne({hwid})
             if (achivments) {
-                return res.status(200).json({message: 'true'})
+                return res.status(200).json({achivments})
             }
 
             else {
@@ -142,7 +142,7 @@ class achivmentsController {
             const {hwid} = req.body 
             const achivments = await Glass.findOne({hwid})
             if (achivments) {
-                return res.status(200).json({message: 'true'})
+                return res.status(200).json({achivments})
             }
 
             else {
@@ -151,6 +151,46 @@ class achivmentsController {
         } catch (e) {
             console.log(e)
             res.status(400).json({message: 'false'})
+        }
+    }
+
+    async updatePaper(req, res){
+        try{
+            const {hwid, count} = req.body
+            const app = await Paper.updateOne({'hwid': hwid }, {$set: {'count': count} });
+            res.json({message: `Updated`})
+        } catch(e){
+            console.log(e)
+        }
+    }
+
+    async updateMetal(req, res){
+        try{
+            const {hwid, count} = req.body
+            const app = await Metal.updateOne({'hwid': hwid }, {$set: {'count': count} });
+            res.json({message: `Updated`})
+        } catch(e){
+            console.log(e)
+        }
+    }
+
+    async updatePlastic(req, res){
+        try{
+            const {hwid, count} = req.body
+            const app = await Plastic.updateOne({'hwid': hwid }, {$set: {'count': count} });
+            res.json({message: `Updated`})
+        } catch(e){
+            console.log(e)
+        }
+    }
+
+    async updateGlass(req, res){
+        try{
+            const {hwid, count} = req.body
+            const app = await Glass.updateOne({'hwid': hwid }, {$set: {'count': count} });
+            res.json({message: `Updated`})
+        } catch(e){
+            console.log(e)
         }
     }
 }
