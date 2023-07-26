@@ -1,2 +1,2 @@
-# JasylTirsilikAPI
-Rest API for https://github.com/liflaks/JasylTirsilik
+# Jasyl Tirsilik API
+Rest API for JasylTirsilik dekstop app
